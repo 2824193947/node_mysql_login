@@ -1,5 +1,6 @@
 const { sequelize, Sequelize } = require('../init')
-    // 创建模型 第一个参数是 表名
+
+// 创建模型 第一个参数是 表名(通过返回的模型可以进行查询)
 const User = sequelize.define('user', {
     // 一个对象就是一个字段
     // 用户名
@@ -18,6 +19,9 @@ const User = sequelize.define('user', {
     }
 })
 
+// 同步模型(将user信息添加到数据库)
 User.sync().then(() => {
     console.log('模型同步成功');
 })
+
+module.exports = { User }
